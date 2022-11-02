@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Image.asset("assets/images/logo1.png"),
           //     style: Theme.of(context)
           //         .textTheme

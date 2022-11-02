@@ -27,6 +27,20 @@ dependencies:
   image_picker: ^0.8.3+1
   flutter_svg:
   path_provider: 
+  firebase_ml_vision: ^0.9.10
+  responsive_builder: ^0.4.3
+  provider: ^6.0.3
+  firebase_core: ^1.22.0
+  convex_bottom_bar: ^3.1.0+1
+  firebase_auth:
+  firebase_storage:
+  cloud_firestore:
+  fluttertoast:
+  modal_progress_hud_nsn:
+  velocity_x: ^3.4.0
+  font_awesome_flutter: ^10.1.0
+  cached_network_image: ^3.2.1
+  # fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +59,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/
     - assets/icons/
     - assets/images/
     - assets/cover.jpg

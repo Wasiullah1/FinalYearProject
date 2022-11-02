@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192813026871",
+    "project_id": "analyzing-skin-color",
+    "storage_bucket": "analyzing-skin-color.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192813026871:android:4716d64999bb4212d479b2",
+        "android_client_info": {
+          "package_name": "com.AnalyzingSkinColor.project_finalyear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192813026871-j3m2rlkoa2f5p1tquq8m51ahj6elkqiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrwdObCOuKDdiUOtByqucJBCVIwuXqCNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192813026871-j3m2rlkoa2f5p1tquq8m51ahj6elkqiv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

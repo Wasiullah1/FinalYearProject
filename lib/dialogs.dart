@@ -31,7 +31,7 @@ class Dialogs {
               ),
             ),
             actions: <Widget>[
-              FlatButton(
+              MaterialButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text('Close'),
               )

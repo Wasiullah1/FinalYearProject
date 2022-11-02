@@ -1,10 +1,13 @@
+// import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:project_finalyear/display.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:project_finalyear/Shop/screen/detail/home/homescreen.dart';
+// import 'package:project_finalyear/home.dart';
+import 'package:project_finalyear/makeup.dart';
+// import 'package:provider/provider.dart';
 import 'package:tflite/tflite.dart';
 
 class Imgpick extends StatefulWidget {
@@ -16,6 +19,7 @@ class Imgpick extends StatefulWidget {
 
 class _ImgpickState extends State<Imgpick> {
   List _outputs;
+  // List result;
   File image;
   bool _loading = false;
   @override
@@ -71,63 +75,121 @@ class _ImgpickState extends State<Imgpick> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Color.fromARGB(255, 242, 201, 174),
-        body: Container(
-          padding: EdgeInsets.all(32),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 242, 201, 174),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
           child: Column(children: [
-            Spacer(),
+            // Spacer(),
             image != null
                 ? Image.file(
                     image,
-                    width: 200,
-                    height: 200,
+                    width: 250,
+                    height: 350,
                   )
-                : Image.asset("assets/images/self.png",
-                    width: 160, height: 210, fit: BoxFit.fill),
-            const SizedBox(
-              height: 14,
+                : Column(children: [
+                    Image.asset("assets/images/self.png",
+                        width: 160, height: 210, fit: BoxFit.fill),
+                    Image.asset(
+                      "assets/images/logo1.png",
+                    ),
+                  ]),
+            image == null
+                ? Text("Please Select Face Image")
+                : Column(children: [
+                    Image.asset("assets/images/self.png",
+                        width: 160, height: 210, fit: BoxFit.fill),
+                    Image.asset(
+                      "assets/images/logo1.png",
+                    ),
+                  ]),
+
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            _outputs != null
+                ? Column(
+                    children: [
+                      // Text(
+                      //   "${_outputs[0]["label"]}",
+                      //   style: TextStyle(
+                      //     color: Colors.black,
+                      //     fontSize: 20.0,
+                      //     background: Paint()..color = Colors.white,
+                      //   ),
+                      // ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Makeup(_outputs[0]["label"])));
+                        },
+                        // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size.fromHeight(36),
+                          primary: Color.fromARGB(255, 239, 165, 116),
+                          onPrimary: Colors.black,
+                        ),
+                        child: Text(_outputs[0]["label"],
+                            style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.red[700],
+                            )
+                            //
+                            ),
+                      ),
+                    ],
+                  )
+                : Container(),
+            SizedBox(
+              height: 20,
             ),
-            Image.asset(
-              "assets/images/logo1.png",
-            ),
+            buildButton(
+                icon: Icons.image_outlined,
+                Text: Text("Pick Image from Gallery",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.white,
+                    )),
+                onClicked: () => pickImage(ImageSource.gallery)),
             const SizedBox(
               height: 20,
             ),
             buildButton(
-                Text: Text("Pick Gallery"),
-                icon: Icons.image_outlined,
-                onClicked: () => pickImage(ImageSource.gallery)),
-            const SizedBox(
-              height: 40,
-            ),
-            buildButton(
-              Text: Text(
-                'Pick Camera',
-                style: TextStyle(color: Colors.red),
-              ),
+              Text: Text('Take a picture from Camera',
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white,
+                  )),
               icon: Icons.camera_alt_outlined,
-              onClicked: () => pickImage1(ImageSource.camera),
+              onClicked: () {
+                pickImage1(ImageSource.camera);
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => Makeup()));
+              },
             ),
-            Spacer(),
+            // Spacer(),
             SizedBox(
-              height: 15,
+              height: 20,
             ),
-            _outputs != null
-                ? Text(
-                    "${_outputs[0]["label"]}",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      background: Paint()..color = Colors.white,
-                    ),
-                  )
-                : Container(),
           ]),
         ),
-      );
+      ),
+    );
+  }
+
   Widget buildButton({
-    Text: Text,
+    Text Text,
     // String text,
     IconData icon,
     VoidCallback onClicked,
@@ -137,14 +199,14 @@ class _ImgpickState extends State<Imgpick> {
             minimumSize: Size.fromHeight(56),
             primary: Color.fromARGB(255, 239, 165, 116),
             onPrimary: Colors.black,
-            textStyle: TextStyle(fontSize: 20, color: Colors.red),
           ),
           child: Row(
             children: [
-              Icon(icon, size: 28),
+              Icon(icon, size: 28, color: Colors.white),
               const SizedBox(
-                width: 16,
+                width: 10,
               ),
+              Text,
             ],
           ),
           onPressed: onClicked);

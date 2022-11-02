@@ -1,18 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:project_finalyear/display.dart';
-import 'package:project_finalyear/home.dart';
+import 'package:project_finalyear/splashscreen.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomeScreen(),
-  ));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // final auth = FirebaseAuth.instance;
+  await Firebase.initializeApp();
+  // ChangeNotifierProvider<ImageModel>(
+  //   child: MyApp(), builder: (BuildContext context, MyApp) => MyApp)
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SafeArea(child: SplashScreen()));
   }
 }

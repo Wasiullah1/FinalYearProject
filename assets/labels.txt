@@ -1,10 +1,7 @@
-Grey Scale
-Bright Tone
-Dark Brown Tone
-Others
-Medium Vitishe Tone
-Vitishe Tone
-White Tone
-Fair Tone
-Dull Vitishe Tone
-Extra Fair Tone
+Fair
+Light Medium
+Dark Medium
+Browned Caramel
+Espresso Milk Chocolate
+Cacao Black Skin
+Invalid Image
